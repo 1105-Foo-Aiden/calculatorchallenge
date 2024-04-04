@@ -6,10 +6,12 @@
 
 **Date**: 4/4/24
 
-**Vercel**: 
+**Vercel**: https://calculatorchallenge-1fwt8fqoa-aiden-foos-projects.vercel.app
 
 **Github**: https://github.com/1105-Foo-Aiden/calculatorchallenge
 
+**Discription**: Yeah, uh, none of it works, none of the math populates, there's no responsiveness and there's really nothing I can do to help it with the time I have left. 
+There are variables that don't link up correctly and the buttons do nothing except for the 15% which changes to an active state, but reverts as soon as you click on something else.
 ### Peer Review:
 **Name**: Michael Heckerman
 

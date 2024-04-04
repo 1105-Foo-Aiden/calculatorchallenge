@@ -27,6 +27,7 @@ export default function Home() {
   const HandleReset = () =>{
     setTotal(0)
     setNumOfPeople(0)
+    setCustom(0)
   }
 
   return (
@@ -55,7 +56,7 @@ export default function Home() {
                 <input
                 name="bill"
                 type="number"
-                className="w-full text-right outline-none bg-transparent no-spin"
+                className="w-full text-right outline-none bg-transparent"
                 value={total}
                 onChange={(e) => { 
                   let inputValue = parseFloat(e.target.value);
