@@ -3,25 +3,25 @@
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [total, setTotal] = useState<number>(0)
-  const [numOfPeople, setNumOfPeople] = useState<number>(0)
-  const [custom, setCustom] = useState<number>()
-  const [tipAmount, setTipAmount] = useState<number>(0)
-  const [perPseron, setPerPerson] = useState<number>(0)
+  // const [total, setTotal] = useState<number>(0)
+  // const [numOfPeople, setNumOfPeople] = useState<number>(0)
+  // const [custom, setCustom] = useState<number>()
+  // const [tipAmount, setTipAmount] = useState<number>(0)
+  // const [perPseron, setPerPerson] = useState<number>(0)
 
-  useEffect(() => {
-    if (numOfPeople > 0 && perPseron > 0 && custom != undefined) {
-      let billTip = numOfPeople * (tipAmount / 100);
+  // useEffect(() => {
+  //   if (numOfPeople > 0 && perPseron > 0 && custom != undefined) {
+  //     let billTip = numOfPeople * (tipAmount / 100);
       
-      setTotal((total + billTip) / numOfPeople)
-      setTipAmount(billTip / numOfPeople);
-    }
-  }, [numOfPeople, tipAmount, total])
+  //     setTotal((total + billTip) / numOfPeople)
+  //     setTipAmount(billTip / numOfPeople);
+  //   }
+  // }, [numOfPeople, tipAmount, total])
 
-  const HandleReset = () =>{
-    setTotal(0)
-    setNumOfPeople(0)
-  }
+  // const HandleReset = () =>{
+  //   setTotal(0)
+  //   setNumOfPeople(0)
+  // }
 
   return (
     <div>
