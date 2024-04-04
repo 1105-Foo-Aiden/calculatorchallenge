@@ -6,18 +6,17 @@ export default function Home() {
   const [total, setTotal] = useState<number>(0)
   const [numOfPeople, setNumOfPeople] = useState<number>(0)
   const [custom, setCustom] = useState<number>()
-  const [tipAmount, setTipAmount] = useState<number>(0.00)
-  const [perPseron, setPerPerson] = useState<number>(0.00)
+  const [tipAmount, setTipAmount] = useState<number>(0)
+  const [perPseron, setPerPerson] = useState<number>(0)
 
-  const Math = (tipPercent:number) =>{
-    let tipTotal:number = total * (tipPercent / 100)
-    let personTotal = tipTotal / numOfPeople
-    setTipAmount(tipTotal)
-    setPerPerson(personTotal)
-
-
-  }
- 
+  useEffect(() => {
+    if (numOfPeople > 0 && perPseron > 0 && custom != undefined) {
+      let billTip = numOfPeople * (tipAmount / 100);
+      
+      setTotal((total + billTip) / numOfPeople)
+      setTipAmount(billTip / numOfPeople);
+    }
+  }, [numOfPeople, tipAmount, total])
 
   const HandleReset = () =>{
     setTotal(0)
@@ -56,13 +55,13 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-3 ">
               <button type="button" className="hover:text-[#00494d] hover:bg-[#26c0ab]  active:text-[#00494d] active:bg-[#26c0ab] focus:outline-none text-[24px] text-white bg-[#00494d] font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:focus:ring-green-800">5%
               </button>
-              <button type="button"
-               className="hover:text-[#00494d] hover:bg-[#26c0ab]  active:text-[#00494d] active:bg-[#26c0ab] focus:outline-none text-[24px] text-white bg-[#00494d] font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:focus:ring-green-800">10%
-              </button>
-              <button type="button" className="hover:text-[#00494d] hover:bg-[#26c0ab]  active:text-[#00494d] active:bg-[#26c0ab] focus:text-[#00494d] focus:bg-[#26c0ab] focus:outline-none text-[24px] text-white bg-[#00494d] font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:focus:ring-green-800"onClick={() => Math(15)} >15%</button>
+              <input type="radio"
+               className="hover:text-[rgb(0,73,77)] hover:bg-[#26c0ab]  active:text-[#00494d] active:bg-[#26c0ab] focus:outline-none text-[24px] text-white bg-[#00494d] font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:focus:ring-green-800">10%
+              </input>
+              <input type="radio" className="hover:text-[#00494d] hover:bg-[#26c0ab]  active:text-[#00494d] active:bg-[#26c0ab] focus:text-[#00494d] focus:bg-[#26c0ab] focus:outline-none text-[24px] text-white bg-[#00494d] font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:focus:ring-green-800" >15%</input>
 
-              <button type="button" className="hover:text-[#00494d] hover:bg-[#26c0ab]  active:text-[#00494d] active:bg-[#26c0ab] focus:outline-none text-[24px] text-white bg-[#00494d] font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:focus:ring-green-800" >25%</button>
-              <button type="button" className="hover:text-[#00494d] hover:bg-[#26c0ab]  active:text-[#00494d] active:bg-[#26c0ab] focus:outline-none text-[24px] text-white bg-[#00494d] font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:focus:ring-green-800">50%</button>
+              <input type="radio" className="hover:text-[#00494d] hover:bg-[#26c0ab]  active:text-[#00494d] active:bg-[#26c0ab] focus:outline-none text-[24px] text-white bg-[#00494d] font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:focus:ring-green-800" >25%</input>
+              <input type="radio" className="hover:text-[#00494d] hover:bg-[#26c0ab]  active:text-[#00494d] active:bg-[#26c0ab] focus:outline-none text-[24px] text-white bg-[#00494d] font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:focus:ring-green-800">50%</input>
 
               <input type="number" onChange={(e) => setCustom(e.target.valueAsNumber)} className="border border-gray-300 text-gray-900 text-[24px] text-right rounded-md focus:ring-blue-500 focus:border-[#26c0ab] block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-border-[#26c0ab] dark:focus:border-[#26c0ab] border-none bg-[#f4fafa] h-fit" placeholder="Custom" />
             </div>
@@ -83,7 +82,7 @@ export default function Home() {
                    <p className="text-white">Tip Amount</p>
                    <p className="text-white opacity-50">/ person</p>
                 </div>
-                 <p className=" text-[#26c0ab] flex  justify-end text-4xl">${tipAmount}</p>
+                 <p className=" text-[#26c0ab] flex justify-end text-4xl">${tipAmount}</p>
                <div>
                   <p className="text-white">Total</p>
                   <p className="text-white opacity-50">/ person</p>

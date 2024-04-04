@@ -25,5 +25,9 @@
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
-  }
+  },
+  "description": "![Design preview for the Tip calculator app coding challenge](./design/desktop-preview.jpg)",
+  "main": "postcss.config.js",
+  "author": "",
+  "license": "ISC"
 }
