@@ -23,7 +23,7 @@ export default function Home() {
 
   const CalculateTip = useCallback(() => {
     const bill = billAmt ?? 0;
-    if (peeps > 0) {
+    if (peeps > 0 && bill > 0) {
       const tipAmt = (bill * selectedTip) / peeps;
       const totalAmt = (bill * selectedTip + bill) / peeps;
       setCalculatedTip(tipAmt);
@@ -33,7 +33,7 @@ export default function Home() {
 
   const HandleBillInput = (e: any) => {
     const input = e.target.value;
-    const pattern = /^[0-9]+\.?[0-9]*$/; //regex for all numbers
+    const pattern = /^[0-9]+\.?[0-9]*$/; //regex for all numbers and with a .
     if (pattern.test(input)) {
       setShowBillAmtError(false);
       setBillAmt(+input);
@@ -106,7 +106,7 @@ export default function Home() {
         <DisplayComponent
           TipPerPerson={calculatedTip}
           TotalPerPerson={calculatedTotal}
-          HandleResetFunction={HandleReset}
+          ResetFunction={HandleReset}
         />
       </div>
     </div>
