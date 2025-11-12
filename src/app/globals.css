@@ -53,19 +53,23 @@ body {
 .tip-section{
   display: grid;
   justify-items: start;
-  gap: .5rem;
+  gap: 1rem;
+}
+
+.tip-amount{
+  border-radius: 1%;
 }
 
 .tip-amt-wrapper{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: .5rem;
   text-align: center;
 }
 
 @media screen and (max-width: 768px) {
   .tip-amt-wrapper{
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .container {
@@ -98,11 +102,10 @@ body {
   background-color: hsl(var(--text));
   color: hsl(var(--neutral4));
   border-radius: .4rem;
-  padding: .2rem
-}
-
-.tip-btn:hover{
-
+  padding: .2rem;
+  align-content: center;
+  width: 150px;
+  height: 60px;
 }
 
 .form {
@@ -156,6 +159,28 @@ body {
   transition: box-shadow 400ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.custom-input {
+  font: inherit;
+  text-align: right;
+  background-color: hsl(var(--neutral3) / 0.4);
+  border: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 -0.2rem hsl(var(--text)), 0 0 0 -0.2rem hsl(var(--neutral1));
+  transition: box-shadow 400ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  width: 150px;
+  height: 60px;
+}
+
+.custom-input:placeholder-shown{
+  text-align: center;
+}
+
+.custom-input:focus{
+  outline: none;
+  box-shadow: 0 0 0 0.2rem hsl(var(--white)), 0 0 0 0.4rem hsl(var(--text));
+}
+
 .number-input:focus {
   outline: none;
   box-shadow: 0 0 0 0.2rem hsl(var(--white)), 0 0 0 0.4rem hsl(var(--text));
@@ -166,6 +191,7 @@ body {
   background-color: red;
   box-shadow: 0 0 0 0.2rem hsl(var(--white)), 0 0 0 0.4rem hsl(var(--text));
 }
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

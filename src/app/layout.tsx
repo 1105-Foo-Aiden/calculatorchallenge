@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {  Space_Mono } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 
 const space_Mono = Space_Mono({subsets:['latin'], weight:"700"})
 
