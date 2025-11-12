@@ -8,7 +8,7 @@ export default function DisplayComponent({TipPerPerson, TotalPerPerson, ResetFun
               <p className="header">Tip Amount</p>
               <p className="unit">/Person</p>
             </div>
-              <p className="display-amt">${TipPerPerson.toFixed(2) ?? 0}</p>
+              <p className="display-amt">${!isNaN(TipPerPerson.toFixed(2)) ? TipPerPerson.toFixed(2) : 0}</p>
         </div>
         <div className="display-row">
             <div className="display-label">

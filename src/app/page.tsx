@@ -5,7 +5,7 @@ import Form from "@/Componants/Form/form";
 import React, { useCallback, useEffect, useState } from "react";
 
 export default function Home() {
-  const [billAmt, setBillAmt] = useState<number | null>(0);
+  const [billAmt, setBillAmt] = useState<string>("");
   const [showBillAmtError, setShowBillAmtError] = useState<boolean>(false);
   const [showPeepsError, setShowPeepsError] = useState<boolean>(false);
   const [selectedTip, setSelectedTip] = useState<number>(0);
@@ -22,8 +22,8 @@ export default function Home() {
   }, [billAmt, peeps, customTip, selectedTip]);
 
   const CalculateTip = useCallback(() => {
-    const bill = billAmt ?? 0;
-    if (peeps > 0 && bill > 0) {
+    const bill = parseFloat(billAmt) ?? 0;
+    if (peeps > 0 && bill > 0 && selectedTip > 0) {
       const tipAmt = (bill * selectedTip) / peeps;
       const totalAmt = (bill * selectedTip + bill) / peeps;
       setCalculatedTip(tipAmt);
@@ -32,15 +32,15 @@ export default function Home() {
   }, [billAmt, peeps, selectedTip]);
 
   const HandleBillInput = (e: any) => {
-    const input = e.target.value;
+    const input = e.target.value
     const pattern = /^[0-9]+\.?[0-9]*$/; //regex for all numbers and with a .
     if (pattern.test(input)) {
       setShowBillAmtError(false);
-      setBillAmt(+input);
+      setBillAmt(input);
     } else {
       setShowBillAmtError(true);
     }
-    setBillAmt(parseFloat(input));
+    setBillAmt(input);
   };
 
   const HandlePeeps = (e: any) => {
@@ -59,7 +59,7 @@ export default function Home() {
   };
 
   const HandleReset = () => {
-    setBillAmt(0);
+    setBillAmt("");
     setSelectedTip(0);
     setCalculatedTotal(0);
     setCalculatedTip(0);
@@ -102,6 +102,7 @@ export default function Home() {
           showPeepsError={showPeepsError}
           HandleCustomChange={HandleCustomTip}
           customTip={customTip}
+          tipAmt={selectedTip}
         />
         <DisplayComponent
           TipPerPerson={calculatedTip}
